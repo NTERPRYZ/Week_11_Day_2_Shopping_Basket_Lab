@@ -22,10 +22,25 @@ describe ("basket", function(){
     basket.addItem(baseballBat);
     assert.strictEqual(basket.items.length, 2)
   })
+
   it("should be able to remove items", function(){
     basket.addItem(shoe);
     basket.addItem(baseballBat);
     basket.removeItem(shoe);
     assert.strictEqual(basket.items.length, 1)
   })
+
+  it("should not give a discount for basket value under or equal to £20", function(){
+    basket.addItem(baseballBat);
+    assert.strictEqual(baseballBat.price, 10)
+    assert.strictEqual(basket.getTotalCost(), 10);
+  });
+
+  it("should give a discount for basket value over £20", function(){
+    basket.addItem(shoe);
+    basket.addItem(baseballBat);
+    assert.strictEqual(basket.getValue(), 30)
+    assert.strictEqual(basket.getTotalCost(), 27)
+  })
+
 });

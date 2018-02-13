@@ -11,5 +11,25 @@ shopping_basket.prototype.removeItem = function(item){
   this.items.splice(indexOfItem, 1);
 }
 
+shopping_basket.prototype.getTotalCost = function(){
+  const originalValue = this.getValue();
+
+  if(originalValue <= 20){
+    return originalValue;
+  }
+
+  return originalValue * 0.9;
+}
+
+shopping_basket.prototype.getValue = function(){
+  let totalValue = 0;
+
+  for(item of this.items){
+    totalValue += item.price
+  }
+
+  return totalValue;
+}
+
 
 module.exports = shopping_basket;
