@@ -22,4 +22,10 @@ describe ("basket", function(){
     basket.addItem(baseballBat);
     assert.strictEqual(basket.items.length, 2)
   })
+  it("should be able to remove items", function(){
+    basket.addItem(shoe);
+    basket.addItem(baseballBat);
+    basket.removeItem(shoe);
+    assert.strictEqual(basket.items.length, 1)
+  })
 });
